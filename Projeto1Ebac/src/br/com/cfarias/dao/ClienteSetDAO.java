@@ -1,51 +1,71 @@
 package br.com.cfarias.dao;
 
 import java.util.Collection;
-import java.util.HashSet;
+
 import br.com.cfarias.domain.Cliente;
 
-public class ClienteSetDAO implements IClienteDAO {
+import java.util.HashSet;
+
+public class ClienteSetDAO implements IClienteDAO{
 	
-	private HashSet<Cliente>cadastrarCliente;
-	Cliente clienteCadastrado = new Cliente(null, null, null, null, null, null, null, null);
-	
+	private HashSet<Cliente>set;
+	private HashSet<Long>cpfCadastrado;
 	
 	public ClienteSetDAO() {
-		this.cadastrarCliente = new HashSet<>();
-		
+		this.set = new HashSet<>();
+		this.cpfCadastrado = new HashSet<>();
 	}
 
-	
+	//Cadastro
 	public Boolean cadastrar(Cliente cliente) {
-		return null;
+		
+		if(cpfCadastrado.contains(cliente.getCpf())) {
+			System.out.println("Cliente já cadastrado!");
+			return null;
+		}
+		else {
+			set.add(cliente);
+			System.out.println("Cadastro efetivado!");
+		return true;
+		}
+		
 	}
 
-
+	//Excluir
 	public void excluir(Long cpf) {
-		
-
+		Cliente cliente = consultar(cpf);
+		if (cliente != null) {
+			set.remove(cliente);
+		}
+		else {
+			System.out.println("Cliente inexistente");
+		}
 		
 	}
 
-
+	//Alterar
 	public void alterar(Cliente cliente) {
-
+		if(set.contains(cliente)) {
+			set.remove(cliente);
+			set.add(cliente);
+		}
 		
 	}
 
-	
+	//Consultar
 	public Cliente consultar(Long cpf) {
-		
+		for (Cliente cliente : set) {
+			if(cliente.getCpf().equals(cpf)) {
+				return cliente;
+			}
+		}
 		return null;
 	}
 
-	
+	//BuscarTodos
 	public Collection<Cliente> buscarTodos() {
-		
-		return null;
+		return set;
 	}
-	
-	
 	
 	
 }

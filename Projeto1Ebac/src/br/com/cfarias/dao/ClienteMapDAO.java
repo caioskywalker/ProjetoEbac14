@@ -19,7 +19,7 @@ public class ClienteMapDAO implements IClienteDAO {
 		
 		if(clienteCadastrado != null) {
 			clienteCadastrado.setNome(cliente.getNome());
-			clienteCadastrado.setIdade(cliente.getIdade());
+			
 			clienteCadastrado.setTel(cliente.getTel());
 			clienteCadastrado.setNum(cliente.getNum());
 			clienteCadastrado.setEnd(cliente.getEnd());

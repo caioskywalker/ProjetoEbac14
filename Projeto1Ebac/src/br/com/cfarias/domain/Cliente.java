@@ -11,37 +11,27 @@ public class Cliente {
     private String end;
     private String cidade;
     private String estado;
-    private Integer idade;
     private Integer num;
     private Long tel;
     private Long cpf;
 
 
-    public Cliente (String nome, String end, String cidade, String estado, String idade, String cpf, String numero, String tel){
-
+    public Cliente(String nome, String cpf, String tel, String end, String num, String cidade, String estado) {
         this.nome = nome;
+        this.cpf = Long.valueOf(cpf.trim());
+        this.tel = Long.valueOf(tel.trim());
         this.end = end;
+        this.num= Integer.valueOf(num.trim());
         this.cidade = cidade;
         this.estado = estado;
-        this.idade = (Integer.valueOf(idade.replaceAll("\\s+", "")));
-        this.cpf = (Long.valueOf(cpf.replaceAll("[\\s.-]+", "")));;
-        this.num = (Integer.valueOf(numero.replaceAll("\\s+", "")));;
-        this.tel = (Long.valueOf(tel.replaceAll("[\\s.-]+", "")));;
-
-        System.out.println(this.getCidade());
-        System.out.println(this.getNome());
-        System.out.println(this.getNum());
-        System.out.println(this.getCpf());
-        System.out.println(this.getEstado());
-        System.out.println(this.getEnd());
-        System.out.println(this.getTel());
-        System.out.println(this.getIdade());
-
-
+        
     }
+    
 
 
-    public String getNome() {
+
+
+	public String getNome() {
         return nome;
     }
 
@@ -73,13 +63,6 @@ public class Cliente {
         this.estado = estado;
     }
 
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
 
     public Integer getNum() {
         return num;
